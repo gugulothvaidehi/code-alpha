@@ -1,0 +1,24 @@
+def calculate_age(birthdate):
+    today = datetime.now()
+    age = today.year - birthdate.year
+
+    # Adjust age if the birthday hasn't occurred yet this year
+    if (today.month, today.day) < (birthdate.month, birthdate.day):
+        age -= 1
+
+    return age
+
+def main():
+    # Input from the user
+    birth_date_input = input("Enter your birth date (YYYY-MM-DD): ")
+
+    try:
+        # Convert the input string to a date object
+        birthdate = datetime.strptime(birth_date_input, "%Y-%m-%d")
+        age = calculate_age(birthdate)
+        print(f"Your age is: {age} years.")
+    except ValueError:
+        print("Please enter a valid date in YYYY-MM-DD format.")
+
+
+    main()
